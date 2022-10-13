@@ -6,22 +6,14 @@ import Movies from 'components/Movies/Movies';
 
 export const App = () => {
   return (
-    <div
-    // style={{
-    //   height: '100vh',
-    //   display: 'flex',
-    //   justifyContent: 'center',
-    //   alignItems: 'center',
-    //   fontSize: 40,
-    //   color: '#010101',
-    // }}
-    >
+    <div>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<NavBar />}>
-            <Route index element={HomePage} />
-            {/* <Route path="/movies" element={Movies} /> */}
+            <Route index element={<HomePage />} />
+            <Route path="/movies" element={<Movies />} />
           </Route>
+          <Route path="*" element={<HomePage />} />
         </Routes>
       </BrowserRouter>
     </div>
