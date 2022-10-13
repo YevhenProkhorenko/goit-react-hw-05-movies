@@ -1,0 +1,13 @@
+.SearchForm {
+  margin-top: 20px;
+}
+.TextField {
+  width: 20vw;
+}
+.SearchBtn {
+  width: 65px;
+  height: 25px;
+
+  background: #f5f4fa;
+  border-radius: 4px;
+}

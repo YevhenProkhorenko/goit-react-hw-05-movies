@@ -1,9 +1,10 @@
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+
 import NavBar from './NavBar/NavBar';
+import HomePage from './HomePage/HomePage';
+import Movies from 'components/Movies/Movies';
 
 export const App = () => {
-  // const API_KEY = 'f600394e5c476adecdf3ff98fe8dcace';
-  // https://api.themoviedb.org/3/movie/550?api_key=f600394e5c476adecdf3ff98fe8dcacehttps://api.themoviedb.org/3/movie/550?api_key=f600394e5c476adecdf3ff98fe8dcace
-
   return (
     <div
     // style={{
@@ -15,7 +16,14 @@ export const App = () => {
     //   color: '#010101',
     // }}
     >
-      <NavBar />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<NavBar />}>
+            <Route index element={HomePage} />
+            {/* <Route path="/movies" element={Movies} /> */}
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };

@@ -1,0 +1,23 @@
+.section {
+  padding-left: 20px;
+}
+
+.list {
+  padding: 0;
+  list-style: none;
+}
+
+.item:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.link {
+  text-decoration: none;
+  font-size: 17px;
+  color: black;
+  transition: color 300ms ease;
+}
+
+.link:hover {
+  color: orange;
+}

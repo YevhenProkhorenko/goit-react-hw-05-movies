@@ -1,13 +1,22 @@
-import React from 'react';
+import { Suspense } from 'react';
+import { NavLink, Outlet } from 'react-router-dom';
 import css from '../NavBar/NavBar.module.css';
+import Loader from 'components/Loader/Loader';
 
 export default function NavBar() {
   return (
     <div className={css.NavbarWrapper}>
-      <ul className={css.NavList}>
-        <li className={css.NavList_item}>Home</li>
-        <li className={css.NavList_item}>Movies</li>
-      </ul>
+      <header>
+        <nav className={css.NavList}>
+          <NavLink to="/" className={css.NavList_item}>
+            Home
+          </NavLink>
+          {/* <NavLink to="/movies">Movies</NavLink> */}
+        </nav>
+      </header>
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 }
