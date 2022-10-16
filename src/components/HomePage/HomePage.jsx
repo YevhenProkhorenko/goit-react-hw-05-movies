@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getTrending } from 'Shared/API/FetchMovies';
-import MoviesList from 'components/MovieList/MovieList';
+import { MoviesList } from 'components/MovieList/MovieList';
 import Loader from 'components/Loader/Loader';
 
 import React from 'react';

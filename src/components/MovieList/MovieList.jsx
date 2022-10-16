@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import css from './MovieList.module.css';
 
-const MoviesList = ({ movies }) => {
+export const MoviesList = ({ movies }) => {
   return (
     <ul className={css.list}>
       {movies.map(({ title, id }) => (
@@ -15,4 +15,3 @@ const MoviesList = ({ movies }) => {
     </ul>
   );
 };
-export default MoviesList;

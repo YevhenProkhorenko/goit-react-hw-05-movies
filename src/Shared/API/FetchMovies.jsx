@@ -15,3 +15,21 @@ export const getSearchMovies = async query => {
   );
   return response.data;
 };
+export const getMovieReview = async id => {
+  const response = await axios.get(`${BASE_URL}movie/${id}?api_key=${API_KEY}`);
+  return response.data;
+};
+
+export const getCasts = async id => {
+  const response = await axios.get(
+    `${BASE_URL}movie/${id}/credits?api_key=${API_KEY}`
+  );
+  return response.data;
+};
+
+export const getUserReviews = async id => {
+  const response = await axios.get(
+    `${BASE_URL}movie/${id}/reviews?api_key=${API_KEY}`
+  );
+  return response.data;
+};
