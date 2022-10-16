@@ -1,4 +1,4 @@
-import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { lazy } from 'react';
 import NavBar from './NavBar/NavBar';
 import HomePage from './HomePage/HomePage';
@@ -11,19 +11,17 @@ const Review = lazy(() => import('./Reviews/Reviews'));
 export const App = () => {
   return (
     <div>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<NavBar />}>
-            <Route index element={<HomePage />} />
-            <Route path="/movies" element={<Movies />} />
-            <Route path="movies/:id" element={<MovieReview />}>
-              <Route path="cast" element={<Cast />} />
-              <Route path="reviews" element={<Review />} />
-            </Route>
+      <Routes>
+        <Route path="/" element={<NavBar />}>
+          <Route index element={<HomePage />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="movies/:id" element={<MovieReview />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Review />} />
           </Route>
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-      </BrowserRouter>
+        </Route>
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
     </div>
   );
 };
