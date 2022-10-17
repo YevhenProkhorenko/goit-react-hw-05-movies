@@ -1,15 +1,15 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import css from './MovieList.module.css';
 
-export const MoviesList = ({ movies }) => {
+export const MoviesList = ({ movies, state }) => {
   return (
     <ul className={css.list}>
       {movies.map(({ title, id }) => (
         <li key={nanoid()} className={css.item}>
-          <Link className={css.link} to={`/movies/${id}`}>
+          <NavLink className={css.link} state={state} to={`/movies/${id}`}>
             {title}
-          </Link>
+          </NavLink>
         </li>
       ))}
     </ul>

@@ -3,6 +3,7 @@ import { useParams, useNavigate, Outlet, NavLink } from 'react-router-dom';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { getMovieReview } from 'Shared/API/FetchMovies';
 import Loader from 'components/Loader/Loader';
+import css from '../MovieReview/MovieReview.module.css';
 
 export default function MovieReview() {
   const [movie, setMovie] = useState(null);
@@ -36,21 +37,18 @@ export default function MovieReview() {
   }, [id]);
 
   return (
-    <main>
+    <main className={css.Main}>
       {isLoading && <Loader />}
       {error && <p>Something went wrong</p>}
       <div>
-        <button onClick={goBack} type="button">
+        <button onClick={goBack} type="button" className={css.Btn}>
           <AiOutlineArrowLeft />
           Go back
         </button>
-        {/* <NavLink to={location.state?.from ?? '/'} className={css.Btn}>
-          <AiOutlineArrowLeft /> Go back
-        </NavLink> */}
         {movie && (
-          <section>
+          <section className={css.Section}>
             <img src={`${IMG_URL}${movie.poster_path}`} alt={movie.title} />
-            <div>
+            <div className={css.infoWrapper}>
               <h2>{movie.title}</h2>
               <p>UserScore: {movie.vote_average.toFixed(1)}</p>
               <h3>Overview</h3>
@@ -61,7 +59,7 @@ export default function MovieReview() {
           </section>
         )}
       </div>
-      <div>
+      <div className={css.AdditionalWrapper}>
         <p>Additional information</p>
         <NavLink to="cast">Casts</NavLink>
         <NavLink to="reviews">Reviews</NavLink>

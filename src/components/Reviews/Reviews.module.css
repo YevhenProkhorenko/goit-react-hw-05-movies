@@ -1,0 +1,5 @@
+.List_item {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+}

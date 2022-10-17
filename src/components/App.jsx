@@ -20,7 +20,7 @@ export const App = () => {
             <Route path="reviews" element={<Review />} />
           </Route>
         </Route>
-        <Route path="*" element={<Navigate to="/" />} />
+        <Route path="*" element={<Navigate to="movies/:id" />} />
       </Routes>
     </div>
   );
