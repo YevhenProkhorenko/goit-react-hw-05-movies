@@ -40,7 +40,7 @@ export default function MovieReview() {
       {error && <p>Something went wrong</p>}
       <div>
         <button className={css.Btn}>
-          <NavLink to={location.state?.from ?? '/'}>
+          <NavLink to={location.state?.from ?? '/'} className={css.Link}>
             <AiOutlineArrowLeft />
             Go back
           </NavLink>

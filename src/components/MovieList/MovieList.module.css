@@ -1,7 +1,9 @@
 .List {
+  width: 100vw;
   display: grid;
   grid-template-columns: auto auto auto auto auto;
-  padding-left: 2vw;
+
+  padding-left: 1vw;
 }
 
 .List_Item {
@@ -24,5 +26,5 @@
   font-size: 15px;
 }
 .Img {
-  width: 300px;
+  width: 320px;
 }

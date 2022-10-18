@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import Loader from 'components/Loader/Loader';
 import { getCasts } from 'Shared/API/FetchMovies';
 import { CastItem } from './CastItem';
+import css from '../Cast/Cast.module.css';
 
 export default function Cast() {
   const [cast, setCast] = useState(null);
@@ -29,7 +30,7 @@ export default function Cast() {
   }, [id]);
 
   return (
-    <ul>
+    <ul className={css.List}>
       {isLoading && <Loader />}
       {cast && <CastItem cast={cast.cast} />}
     </ul>

@@ -1,5 +1,6 @@
 import { nanoid } from 'nanoid';
 import css from '../Cast/Cast.module.css';
+import PropTypes from 'prop-types';
 
 const IMG_URL = 'https://images.tmdb.org/t/p/w500';
 
@@ -16,9 +17,19 @@ export const CastItem = ({ cast }) => {
         ) : (
           <img src="" alt={original_name} />
         )}
-        <p>{original_name}</p>
+        <h3>{original_name}</h3>
         <p>Character: {character}</p>
       </li>
     );
   });
+};
+
+CastItem.propTypes = {
+  cast: PropTypes.arrayOf(
+    PropTypes.shape({
+      profile_path: PropTypes.string,
+      original_name: PropTypes.string.isRequired,
+      character: PropTypes.string.isRequired,
+    })
+  ),
 };

@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import css from './MovieList.module.css';
+import PropTypes from 'prop-types';
 
 export const MoviesList = ({ movies, state }) => {
   const IMG_URL = 'https://images.tmdb.org/t/p/w500';
@@ -21,4 +22,14 @@ export const MoviesList = ({ movies, state }) => {
       ))}
     </ul>
   );
+};
+MoviesList.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+      poster_path: PropTypes.string,
+    })
+  ),
+  state: PropTypes.shape(PropTypes.string.isRequired),
 };

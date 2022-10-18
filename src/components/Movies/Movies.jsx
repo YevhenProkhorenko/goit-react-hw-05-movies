@@ -57,15 +57,16 @@ export default function Movies() {
           autoComplete="on"
           value={inputUser}
           autoFocus="on"
+          placeholder="Enter the name of the movie"
           className={css.TextField}
         />
         <button className={css.SearchBtn}>Search</button>
       </form>
-      <ul>
+      <>
         {isLoading && <Loader />}
         {error && <p>Something went wrong</p>}
         {movies && <MoviesList movies={movies} state={{ from: location }} />}
-      </ul>
+      </>
     </main>
   );
 }

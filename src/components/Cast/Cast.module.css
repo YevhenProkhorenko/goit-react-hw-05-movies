@@ -1,9 +1,14 @@
+.List {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 10px;
+}
 .List_item {
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
+  align-items: center;
+  padding-left: 5px;
 }
 .Img {
-  width: 200px;
-  height: 200px;
+  width: 600px;
 }
