@@ -1,9 +1,9 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { lazy } from 'react';
 import NavBar from './NavBar/NavBar';
-import HomePage from './HomePage/HomePage';
+import HomePage from '../pages/HomePage/HomePage';
 
-const Movies = lazy(() => import('components/Movies/Movies'));
+const Movies = lazy(() => import('pages/Movies/Movies'));
 const MovieReview = lazy(() => import('./MovieReview/MovieReview'));
 const Cast = lazy(() => import('./Cast/Cast'));
 const Review = lazy(() => import('./Reviews/Reviews'));
@@ -20,7 +20,7 @@ export const App = () => {
             <Route path="reviews" element={<Review />} />
           </Route>
         </Route>
-        <Route path="*" element={<Navigate to="movies/:id" />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </div>
   );
