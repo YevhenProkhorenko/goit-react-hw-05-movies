@@ -65,7 +65,6 @@ export default function Movies() {
         {isLoading && <Loader />}
         {error && <p>Something went wrong</p>}
         {movies && <MoviesList movies={movies} state={{ from: location }} />}
-        {/* {movies && <MoviesList movies={movies} state={{ from: location }} />} */}
       </ul>
     </main>
   );

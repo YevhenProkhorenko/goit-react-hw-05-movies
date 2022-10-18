@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate, Outlet, NavLink } from 'react-router-dom';
+import { useParams, Outlet, NavLink, useLocation } from 'react-router-dom';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { getMovieReview } from 'Shared/API/FetchMovies';
 import Loader from 'components/Loader/Loader';
@@ -13,9 +13,7 @@ export default function MovieReview() {
   const IMG_URL = 'https://images.tmdb.org/t/p/w500';
 
   const { id } = useParams();
-  // const location = useLocation();
-  const navigate = useNavigate();
-  const goBack = () => navigate('/');
+  const location = useLocation();
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -41,9 +39,11 @@ export default function MovieReview() {
       {isLoading && <Loader />}
       {error && <p>Something went wrong</p>}
       <div>
-        <button onClick={goBack} type="button" className={css.Btn}>
-          <AiOutlineArrowLeft />
-          Go back
+        <button className={css.Btn}>
+          <NavLink to={location.state?.from ?? '/'}>
+            <AiOutlineArrowLeft />
+            Go back
+          </NavLink>
         </button>
         {movie && (
           <section className={css.Section}>
@@ -61,8 +61,12 @@ export default function MovieReview() {
       </div>
       <div className={css.AdditionalWrapper}>
         <p>Additional information</p>
-        <NavLink to="cast">Casts</NavLink>
-        <NavLink to="reviews">Reviews</NavLink>
+        <NavLink to={'cast'} state={{ from: location }} end>
+          Casts
+        </NavLink>
+        <NavLink to={'reviews'} state={{ from: location }}>
+          Reviews
+        </NavLink>
       </div>
       <Outlet />
     </main>

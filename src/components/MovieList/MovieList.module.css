@@ -1,23 +1,28 @@
-.section {
-  padding-left: 20px;
+.List {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  padding-left: 2vw;
 }
 
-.list {
-  padding: 0;
+.List_Item {
   list-style: none;
 }
-
-.item:not(:last-child) {
-  margin-bottom: 10px;
-}
-
-.link {
-  text-decoration: none;
-  font-size: 17px;
-  color: black;
-  transition: color 300ms ease;
-}
-
-.link:hover {
+.List_Item:hover {
   color: orange;
+}
+
+.Link {
+  text-decoration: none;
+  color: black;
+  transition: color 250ms ease;
+}
+
+.Link:hover {
+  color: orange;
+}
+.Tittle {
+  font-size: 15px;
+}
+.Img {
+  width: 300px;
 }
