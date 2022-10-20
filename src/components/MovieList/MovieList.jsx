@@ -11,11 +11,14 @@ export const MoviesList = ({ movies, state }) => {
       {movies.map(({ title, id, poster_path }) => (
         <li key={nanoid()} className={css.List_Item}>
           <NavLink className={css.Link} state={state} to={`/movies/${id}`}>
-            <img
-              src={`${IMG_URL}${poster_path}`}
-              alt={title}
-              className={css.Img}
-            />
+            {IMG_URL && (
+              <img
+                src={`${IMG_URL}${poster_path}`}
+                alt={title}
+                className={css.Img}
+              />
+            )}
+
             <h4 className={css.Tittle}>{title}</h4>
           </NavLink>
         </li>

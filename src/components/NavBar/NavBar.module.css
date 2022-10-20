@@ -12,7 +12,8 @@
   list-style: none;
 }
 .NavList_item {
-  padding: 10px;
+  text-decoration: none;
+  padding: 14px;
   font-family: 'Roboto';
   font-size: 26px;
   line-height: 1.16;

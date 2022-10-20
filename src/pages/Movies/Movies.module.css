@@ -3,6 +3,7 @@
 }
 .TextField {
   width: 20vw;
+  margin-left: 17px;
   margin-bottom: 20px;
 }
 .SearchBtn {

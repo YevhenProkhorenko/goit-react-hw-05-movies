@@ -14,6 +14,7 @@ export default function MovieReview() {
 
   const { id } = useParams();
   const location = useLocation();
+  const goBack = location.state?.from ?? '/';
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -40,7 +41,7 @@ export default function MovieReview() {
       {error && <p>Something went wrong</p>}
       <div>
         <button className={css.Btn}>
-          <NavLink to={location.state?.from ?? '/'} className={css.Link}>
+          <NavLink to={goBack} className={css.Link}>
             <AiOutlineArrowLeft />
             Go back
           </NavLink>
@@ -61,10 +62,10 @@ export default function MovieReview() {
       </div>
       <div className={css.AdditionalWrapper}>
         <p>Additional information</p>
-        <NavLink to={'cast'} state={{ from: location }} end>
+        <NavLink to={'cast'} state={{ from: goBack }} end>
           Casts
         </NavLink>
-        <NavLink to={'reviews'} state={{ from: location }}>
+        <NavLink to={'reviews'} state={{ from: goBack }}>
           Reviews
         </NavLink>
       </div>
