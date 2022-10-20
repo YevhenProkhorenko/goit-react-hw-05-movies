@@ -11,7 +11,7 @@ export default function Movies() {
   const [isLoading, setIsLoading] = useState(false);
   // const [error, setError] = useState(null);
   const [search, setSearch] = useState('');
-  // const [inputUser, setInputUser] = useState('');
+  const [inputUser, setInputUser] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query');
   const location = useLocation();
@@ -21,57 +21,64 @@ export default function Movies() {
       return;
     }
 
-    // const fetchMovie = async () => {
-    //   try {
-    //     setIsLoading(true);
-    //     const data = await getSearchMovies(query);
-    //     setMovies(data.results);
-    //   } catch (error) {
-    //     console.log(error);
-    //     // setError(error);
-    //   } finally {
-    //     setIsLoading(false);
-    //   }
-    // };
+    const fetchMovie = async () => {
+      try {
+        setIsLoading(true);
+        const data = await getSearchMovies(query);
+        setMovies(data.results);
+      } catch (error) {
+        console.log(error);
+        // setError(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-    debouncedSearch();
+    fetchMovie();
   }, [query, search]);
 
-  const fetchMovie = async () => {
-    try {
-      setIsLoading(true);
-      const data = await getSearchMovies(query);
-      setMovies(data.results);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-  const debouncedSearch = debounce(() => fetchMovie(), 1000);
+  // const fetchMovie = async () => {
+  //   try {
+  //     setIsLoading(true);
+  //     const data = await getSearchMovies(query);
+  //     setMovies(data.results);
+  //   } catch (error) {
+  //     console.log(error);
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
+  // const debouncedSearch = debounce(() => fetchMovie(), 1000);
   // const debouncedSetSearch = debounce(e => setSearch(e), 1000);
+  const debouncedSetSearchParams = debounce(e => setSearchParams(e), 2000);
 
   const handleChange = e => {
     e.preventDefault();
     const value = e.target.value;
     // debouncedSearch(value);
-    setSearch(value);
+    // setInputUser(value);
+    // setSearch(value);
     setSearchParams({ query: value });
   };
 
+  // const debouncedHandleChange = debounce(e => handleChange(e), 3000);
   const handleSubmit = e => {
     e.preventDefault();
-    if (search.trim() === '') {
+    if (inputUser.trim() === '') {
       alert('No such movie exists');
       return;
     }
-    setSearchParams(search);
+    setSearch(inputUser);
+    // setSearchParams({ query: inputUser });
+    // setSearchParams(search);
+    // debouncedSetSearchParams(search);
   };
 
   return (
     <main>
       <form onSubmit={handleSubmit} className={css.SearchForm}>
         <input
+          // onChange={debouncedHandleChange}
           onChange={handleChange}
           type="text"
           autoComplete="on"
