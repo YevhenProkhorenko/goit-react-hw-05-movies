@@ -4,14 +4,12 @@ import { getSearchMovies } from 'Shared/API/FetchMovies';
 import Loader from 'components/Loader/Loader';
 import { MoviesList } from 'components/MovieList/MovieList';
 import css from './Movies.module.css';
-import debounce from 'lodash/debounce';
+// import debounce from 'lodash/debounce';
 
 export default function Movies() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  // const [error, setError] = useState(null);
   const [search, setSearch] = useState('');
-  const [inputUser, setInputUser] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query');
   const location = useLocation();
@@ -28,7 +26,6 @@ export default function Movies() {
         setMovies(data.results);
       } catch (error) {
         console.log(error);
-        // setError(error);
       } finally {
         setIsLoading(false);
       }
@@ -37,41 +34,22 @@ export default function Movies() {
     fetchMovie();
   }, [query, search]);
 
-  // const fetchMovie = async () => {
-  //   try {
-  //     setIsLoading(true);
-  //     const data = await getSearchMovies(query);
-  //     setMovies(data.results);
-  //   } catch (error) {
-  //     console.log(error);
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
-  // const debouncedSearch = debounce(() => fetchMovie(), 1000);
-  // const debouncedSetSearch = debounce(e => setSearch(e), 1000);
-  const debouncedSetSearchParams = debounce(e => setSearchParams(e), 2000);
-
   const handleChange = e => {
     e.preventDefault();
     const value = e.target.value;
-    // debouncedSearch(value);
-    // setInputUser(value);
-    // setSearch(value);
+    setSearch(value);
     setSearchParams({ query: value });
   };
 
   // const debouncedHandleChange = debounce(e => handleChange(e), 3000);
   const handleSubmit = e => {
     e.preventDefault();
-    if (inputUser.trim() === '') {
+    if (search.trim() === '') {
       alert('No such movie exists');
       return;
     }
-    setSearch(inputUser);
-    // setSearchParams({ query: inputUser });
-    // setSearchParams(search);
-    // debouncedSetSearchParams(search);
+    setSearch(search);
+    setSearchParams(search);
   };
 
   return (
