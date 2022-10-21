@@ -9,9 +9,9 @@ import css from './Movies.module.css';
 export default function Movies() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [search, setSearch] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query');
+  const [search, setSearch] = useState(query ?? '');
   const location = useLocation();
 
   useEffect(() => {
@@ -36,6 +36,7 @@ export default function Movies() {
 
   const handleChange = e => {
     e.preventDefault();
+
     const value = e.target.value;
     setSearch(value);
     setSearchParams({ query: value });
@@ -49,7 +50,7 @@ export default function Movies() {
       return;
     }
     setSearch(search);
-    setSearchParams(search);
+    setSearchParams({ query: search });
   };
 
   return (
