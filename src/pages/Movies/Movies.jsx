@@ -39,7 +39,7 @@ export default function Movies() {
 
     const value = e.target.value;
     setSearch(value);
-    setSearchParams({ query: value });
+    setSearchParams({ value });
   };
 
   // const debouncedHandleChange = debounce(e => handleChange(e), 3000);
